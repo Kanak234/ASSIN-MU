@@ -7,22 +7,22 @@
 /* ---------- 1. Design tokens (colours, radius) ---------- */
 :root {
   --bg: #0b1020;
-  --surface: #131b30;
-  --surface-2: #0e1528;
-  --border: #253153;
-  --text: #e9eef8;
-  --muted: #9aa6c0;
-  --accent: #6ea8ff;            /* changes per page */
+  --surface: #141d34;
+  --surface-2: #0c1325;
+  --border: #33416a;            /* brighter border = cards stand out */
+  --text: #f3f6fc;              /* near-white text */
+  --muted: #b8c2d9;             /* ≈ 9:1 contrast on --bg (WCAG AAA) */
+  --accent: #93c5fd;            /* changes per page (light tones = readable on dark) */
   --good: #22c55e;
   --warn: #f59e0b;
   --bad: #ef4444;
   --radius: 16px;
   --shadow: 0 10px 30px rgba(0, 0, 0, .35);
 }
-body[data-accent="pink"]   { --accent: #f472b6; }
-body[data-accent="green"]  { --accent: #34d399; }
-body[data-accent="amber"]  { --accent: #fbbf24; }
-body[data-accent="violet"] { --accent: #a78bfa; }
+body[data-accent="pink"]   { --accent: #f9a8d4; }
+body[data-accent="green"]  { --accent: #6ee7b7; }
+body[data-accent="amber"]  { --accent: #fcd34d; }
+body[data-accent="violet"] { --accent: #c4b5fd; }
 
 /* ---------- 2. Base ---------- */
 * { box-sizing: border-box; }
@@ -238,3 +238,10 @@ button.secondary:active { box-shadow: 0 1px 0 #070b16; }
   .hero .icon { animation: none; }
   .project { transform: none !important; }
 }
+
+/* ---------- 14. 3D coding background (bg.js) ---------- */
+#bg3d { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+/* cards slightly see-through + blur, so the background shows but text stays sharp */
+.card { background: linear-gradient(180deg, rgba(255, 255, 255, .05), transparent 40%), color-mix(in srgb, var(--surface) 86%, transparent); backdrop-filter: blur(6px); }
+.project { background: color-mix(in srgb, var(--surface) 86%, transparent); backdrop-filter: blur(6px); }
+.topbar .tag, footer { color: var(--muted); }

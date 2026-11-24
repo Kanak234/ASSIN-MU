@@ -19,6 +19,9 @@ Eleven small web projects built with **plain HTML, CSS and JavaScript**: no fram
 ## Multimedia elements covered
 Text · Graphics (SVG/Canvas) · Animation · Audio (Web Audio API, text-to-speech) · Video (HTML5) · Interactivity
 
+## Live
+https://assin-mu.vercel.app
+
 ## Run
 Open `index.html` in any browser.
 

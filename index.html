@@ -1,38 +1,43 @@
 <!DOCTYPE html>
-<!-- index.html — page ka DHAANCHA (structure).
-     Design → style.css, dimaag (logic) → script.js -->
+<!-- index.html — HOME page of "KP Cyber Lab": links to the 3 mini tools.
+     Each tool lives in its own folder with its own index.html, style.css and script.js. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- phone par sahi fit -->
-  <title>SandeshKavach – Scam Message Checker</title>
-  <meta name="description" content="SMS ya WhatsApp message paste karo, scam hai ya nahi turant jaano.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KP Cyber Lab – 3 Mini Privacy & Security Tools</title>
+  <meta name="description" content="Three small browser tools that show big privacy risks: hidden photo location, browser fingerprinting and pastejacking.">
   <link rel="icon" href="assets/logo-mark.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    <img src="assets/logo-mark.svg" alt="KP logo" width="56" height="56">
-    <h1>Sandesh<span>Kavach</span></h1>
-    <p class="sub">Message paste karo — scam hai ya nahi, 1 second me jaano.</p>
+    <img src="assets/logo-mark.svg" alt="KP logo" width="64" height="64">
+    <h1>KP Cyber <span>Lab</span></h1>
+    <p class="sub">Three small tools. Three big privacy risks you face every day. Pick one 👇</p>
 
-    <!-- user yahan message daalega -->
-    <textarea id="msg" rows="5" placeholder="Jaise: Aapka account aaj block ho jayega, turant OTP bhejein…"></textarea>
-
-    <div class="buttons">
-      <button id="check">🔍 Check karo</button>
-      <button id="sample" class="light">Sample message</button>
+    <div class="grid">
+      <a class="tool pink" href="post-se-pehle/index.html">
+        <span class="emoji">📷</span>
+        <h2>Post Se Pehle</h2>
+        <p>Your photo may hide your exact GPS location. Check a photo and a caption before you post.</p>
+      </a>
+      <a class="tool green" href="browser-jasoos/index.html">
+        <span class="emoji">🕵️</span>
+        <h2>Browser Jasoos</h2>
+        <p>See what every website learns about your device without asking, plus your unique fingerprint ID.</p>
+      </a>
+      <a class="tool amber" href="pastejacking-demo/index.html">
+        <span class="emoji">📋</span>
+        <h2>Pastejacking Demo</h2>
+        <p>What you copy is not what you paste. A safe live demo of a real terminal attack.</p>
+      </a>
     </div>
-
-    <!-- result yahan dikhega (script.js bharega) -->
-    <div id="result"></div>
   </main>
 
   <footer>
     Made by <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University ·
-    Fraud hua? Call <b>1930</b> · 🔒 Message kahin bheja nahi jaata
+    Multimedia Systems Practical (3IBCA504) · 🔒 Everything runs in your browser.
   </footer>
-
-  <script src="script.js"></script> <!-- end me, taaki upar ka HTML pehle ban jaye -->
 </body>
 </html>

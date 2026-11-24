@@ -1,28 +1,21 @@
-# SandeshKavach – Scam Message Checker 🛡️
+# KP Cyber Lab – 3 Mini Privacy & Security Tools 🛡️
 
-Paste an SMS or WhatsApp message and find out in 1 second whether it is a scam. The website highlights the suspicious words, shows a risk score, explains the reasons in simple Hinglish, and reads the result aloud.
+Three small browser tools that show three big everyday risks. **Multimedia Systems Practical (3IBCA504)**, AISECT University.
 
-**Multimedia Systems Practical (3IBCA504)** · Kanak Prabhakar, BCA (Cyber Security), AISECT University · Faculty: Mr. Prabhat Kumar
+| Tool | Folder | Shows |
+|---|---|---|
+| 📷 Post Se Pehle | `post-se-pehle/` | Hidden GPS location in photos + caption oversharing |
+| 🕵️ Browser Jasoos | `browser-jasoos/` | Browser fingerprinting without permission |
+| 📋 Pastejacking Demo | `pastejacking-demo/` | Clipboard hijacking (safe demo) |
 
-## Files (just 3)
-| File | Kaam |
-|---|---|
-| `index.html` | Page structure: textbox, buttons, result box |
-| `style.css` | Look and colours (green = safe, yellow = suspicious, red = scam) |
-| `script.js` | Logic: 8 rules → score → highlight → speech |
+Built with plain HTML, CSS and JavaScript only. Everything runs in the browser, with no server and no data collection.
 
-## How it works
-1. There are 8 rules, one for each scam trick (OTP, KYC, digital arrest, bijli, lottery, urgency, link, AnyDesk). Each rule has a regex and points.
-2. The points of every matched rule are added up, and the score is capped at 100. A score of 50 or more is SCAM, 20–49 is suspicious, and below 20 is safe.
-3. The matched words are wrapped in `<mark>` so they show up highlighted.
-4. The text is HTML-escaped first, which protects against XSS attacks.
-5. `speechSynthesis` reads the result aloud, so people who cannot read well can still use it.
-
-## Multimedia
-Text · Graphics (logo, colours) · Audio (text-to-speech) · Interactivity
+## Branches
+- `main` — all three tools together (this page)
+- `post-se-pehle`, `browser-jasoos`, `pastejacking-demo` — each tool on its own, for separate Vercel deploys
 
 ## Run / Deploy
-- **Local:** double-click `index.html`.
-- **Vercel:** Add New → Project → import this repo → Framework "Other" → Deploy. No build step is needed.
+- **Local:** open `index.html`.
+- **Vercel:** Add New → Project → import `Kanak234/ASSIN-MU` → Framework "Other" → Deploy. To deploy a single tool, set that branch as the Production Branch in Settings → Git, or create a separate Vercel project for it.
 
-The message never leaves the browser.
+Made by Kanak Prabhakar · BCA (Cyber Security), AISECT University · Faculty: Mr. Prabhat Kumar

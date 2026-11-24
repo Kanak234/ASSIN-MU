@@ -1,0 +1,28 @@
+/* style.css — the LOOK of "Post Se Pehle". Red = risk, green = safe */
+body { margin: 0; font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; text-align: center; }
+main { max-width: 680px; margin: auto; padding: 36px 16px; }
+h1 { font-size: 2.4rem; margin: 6px 0 0; }
+h1 span { color: #f472b6; }
+.sub { color: #94a3b8; }
+a { color: #7dd3fc; }
+
+.card { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 18px; margin: 18px 0; text-align: left; }
+.card h2 { margin: 0 0 12px; font-size: 1.2rem; }
+
+/* file input ko button jaisa dikhana */
+.upload { display: block; text-align: center; padding: 18px; border: 2px dashed #f472b6; border-radius: 12px; cursor: pointer; font-weight: 600; }
+.upload input { display: block; margin: 10px auto 0; color: #94a3b8; }
+
+textarea { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 10px; border: 1px solid #334155;
+           background: #0f172a; color: inherit; font: inherit; }
+button { margin-top: 10px; width: 100%; padding: 12px; border: 0; border-radius: 10px; font-size: 1rem;
+         font-weight: 600; cursor: pointer; background: #f472b6; color: #1a0b14; }
+button:hover { opacity: .9; }
+
+.preview { max-width: 100%; max-height: 260px; display: block; margin: 14px auto; border-radius: 10px; }
+.bad { background: rgba(239,68,68,.12); border-left: 4px solid #ef4444; padding: 8px 10px; margin-bottom: 8px; border-radius: 6px; list-style: none; }
+ul { padding-left: 18px; }
+.ok { color: #4ade80; }
+.quote { background: #0f172a; padding: 10px; border-radius: 8px; }
+mark { background: #fde047; color: #000; border-radius: 4px; padding: 0 3px; }
+footer { color: #64748b; font-size: .85rem; padding: 20px; }

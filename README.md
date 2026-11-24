@@ -24,3 +24,13 @@ Everything runs inside the browser. No data is uploaded, stored or tracked.
 
 ---
 Kanak Prabhakar · BCA, AISECT University, Hazaribagh · Faculty: Mr. Prabhat Kumar
+
+## Launch checklist
+- Privacy policy (`privacy.html`): no data collected, no cookies, third-party links, DPDP/GDPR note
+- Terms (`terms.html`): no guarantee, fair use, free (so no refunds), Indian law
+- Custom `404.html`, `robots.txt`, favicon, meta title and description, social preview image on every page
+- HTTPS enforced (HSTS) plus a strict Content-Security-Policy and other security headers in `vercel.json`
+- No secrets in the frontend, no inline scripts or styles, all images have alt text, text contrast is about 9:1
+- Form validation: max lengths, JPG-only and size limit for photos
+- Mobile responsive, keyboard friendly, respects "reduced motion"
+- All links checked, with no broken links

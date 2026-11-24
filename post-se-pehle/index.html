@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Post Se Pehle – Photo & Caption Privacy Checker</title>
   <meta name="description" content="See the hidden data inside a photo (GPS location, phone model, time) and check a caption for oversharing before you post.">
+  <meta property="og:title" content="Post Se Pehle – Photo & Caption Privacy Checker">
+  <meta property="og:description" content="See the hidden data inside a photo (GPS location, phone model, time) and check a caption for oversharing before you post.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css">
 </head>
@@ -25,18 +29,19 @@
       <label class="upload">📁 Choose a photo (JPG)
         <input type="file" id="photo" accept="image/jpeg">
       </label>
+      <small>By choosing a photo you agree that it is read only inside your browser. It is never uploaded.</small>
       <div id="photoResult" class="result"></div>
     </section>
 
     <section class="card">
       <h2>2 · Caption check</h2>
-      <textarea id="caption" rows="3" aria-label="Caption to check" placeholder="e.g. Off to Goa for a week from tomorrow ✈️ house is empty 😂"></textarea>
+      <textarea id="caption" rows="3" maxlength="1000" aria-label="Caption to check" placeholder="e.g. Off to Goa for a week from tomorrow ✈️ house is empty 😂"></textarea>
       <button id="checkCaption">🔍 Check caption</button>
       <div id="captionResult" class="result" aria-live="polite"></div>
     </section>
   </main>
 
-  <footer>Your photo and caption are checked inside your browser and never uploaded.</footer>
+  <footer>Your photo and caption are checked inside your browser and never uploaded. · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
   <script src="script.js"></script>
   <script src="../bg.js"></script>
 </body>

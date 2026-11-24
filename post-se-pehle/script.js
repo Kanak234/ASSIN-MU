@@ -17,6 +17,15 @@
 document.getElementById("photo").addEventListener("change", function () {
   const file = this.files[0];
   if (!file) return;
+  // validation: EXIF location lives in JPG photos, so reject other types and huge files
+  if (!/jpe?g$/i.test(file.type) && !/\.jpe?g$/i.test(file.name)) {
+    document.getElementById("photoResult").innerHTML = '<div class="alert warn"><h3>Please choose a JPG photo</h3><p>Phone camera photos are JPG. PNG and screenshots don\'t carry GPS data.</p></div>';
+    return;
+  }
+  if (file.size > 25 * 1024 * 1024) {
+    document.getElementById("photoResult").innerHTML = '<div class="alert warn"><h3>Photo is too large</h3><p>Please choose a photo under 25 MB.</p></div>';
+    return;
+  }
   const reader = new FileReader();                 // reads the file as raw bytes
   reader.onload = () => showPhotoReport(file, reader.result);
   reader.readAsArrayBuffer(file);

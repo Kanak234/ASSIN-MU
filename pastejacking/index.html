@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pastejacking Demo – What You Copy Is Not What You Paste</title>
   <meta name="description" content="A safe live demo of pastejacking: websites can secretly change what you copy.">
+  <meta property="og:title" content="Pastejacking Demo – What You Copy Is Not What You Paste">
+  <meta property="og:description" content="A safe live demo of pastejacking: websites can secretly change what you copy.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css">
 </head>
@@ -35,7 +39,7 @@
 
     <section class="card">
       <h2>Now paste here (Ctrl+V)</h2>
-      <textarea id="paste" rows="3" aria-label="Paste area" placeholder="Paste what you copied…"></textarea>
+      <textarea id="paste" rows="3" maxlength="2000" aria-label="Paste area" placeholder="Paste what you copied…"></textarea>
       <div id="verdict" aria-live="polite"></div>
     </section>
 
@@ -50,7 +54,7 @@
     </section>
   </main>
 
-  <footer>Educational demo: evil.example is a reserved, fake domain, and nothing is executed.</footer>
+  <footer>Educational demo: evil.example is a reserved, fake domain, and nothing is executed. · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
   <script src="script.js"></script>
   <script src="../bg.js"></script>
 </body>

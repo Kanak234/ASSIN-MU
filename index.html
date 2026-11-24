@@ -1,86 +1,38 @@
 <!DOCTYPE html>
-<!-- =====================================================================
-     index.html — PAGE STRUCTURE
-     WHY:  HTML = only content/structure. Look → css/style.css,
-           logic → js/rules.js + js/app.js.
-     FLOW: browser reads this → loads CSS → shows page → loads JS at end
-           (rules.js FIRST because app.js uses RULES).
-     ===================================================================== -->
+<!-- index.html — page ka DHAANCHA (structure).
+     Design → style.css, dimaag (logic) → script.js -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SandeshKavach – Scam Message Decoder</title>
-  <meta name="description" content="Paste any SMS or WhatsApp message. SandeshKavach highlights scam red-flags (KYC, OTP, digital arrest, bijli cut, fake job) and explains them in simple Hinglish.">
-  <meta name="author" content="Kanak Prabhakar">
-  <meta property="og:title" content="SandeshKavach – Scam Message Decoder">
-  <meta property="og:description" content="Check whether an SMS/WhatsApp message is a scam — with reasons in simple Hinglish.">
-  <meta property="og:image" content="assets/preview.png">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- phone par sahi fit -->
+  <title>SandeshKavach – Scam Message Checker</title>
+  <meta name="description" content="SMS ya WhatsApp message paste karo, scam hai ya nahi turant jaano.">
+  <link rel="icon" href="assets/logo-mark.svg">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip" href="#checker">Skip to checker</a>
-
-  <!-- ===== HEADER ===== -->
-  <header class="topbar">
-    <a href="#" class="brand"><img src="assets/logo-mark.svg" alt="" width="32" height="32"> SandeshKavach</a>
-    <nav><a href="#checker">Check</a><a href="#how">Kaise kaam karta hai</a><a href="privacy.html">Privacy</a></nav>
-  </header>
-
   <main>
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <h1>Ye message <span>scam</span> to nahi?</h1>
-      <p>SMS ya WhatsApp message paste karein. SandeshKavach shaq wale shabd highlight karega aur simple bhasha me batayega <strong>kyun</strong>.</p>
-    </section>
+    <img src="assets/logo-mark.svg" alt="KP logo" width="56" height="56">
+    <h1>Sandesh<span>Kavach</span></h1>
+    <p class="sub">Message paste karo — scam hai ya nahi, 1 second me jaano.</p>
 
-    <!-- ===== CHECKER (single clear CTA) ===== -->
-    <section id="checker" class="card">
-      <label for="msg"><strong>Message yahan paste karein</strong></label>
-      <textarea id="msg" rows="6" maxlength="2000" placeholder="Jaise: Aapka account aaj block ho jayega, KYC update karein…"></textarea>
-      <div class="row">
-        <button id="checkBtn" class="btn" type="button">🔍 Check karein</button>
-        <button id="clearBtn" class="btn ghost" type="button">Saaf karein</button>
-        <small class="hint">Shortcut: Ctrl + Enter</small>
-      </div>
-      <!-- Demo samples — useful when showing to sir -->
-      <div class="samples" aria-label="Sample messages">
-        <span>Sample try karein:</span>
-        <button type="button" data-sample="kyc">KYC</button>
-        <button type="button" data-sample="bijli">Bijli bill</button>
-        <button type="button" data-sample="arrest">Digital arrest</button>
-        <button type="button" data-sample="job">Task job</button>
-        <button type="button" data-sample="safe">Normal message</button>
-      </div>
-      <p class="privacy-note">🔒 Aapka message kahin bheja nahi jaata — sab kuch aapke browser me hi check hota hai.</p>
-    </section>
+    <!-- user yahan message daalega -->
+    <textarea id="msg" rows="5" placeholder="Jaise: Aapka account aaj block ho jayega, turant OTP bhejein…"></textarea>
 
-    <!-- ===== RESULT (filled by app.js) ===== -->
-    <section id="result" class="card" hidden aria-live="polite"></section>
+    <div class="buttons">
+      <button id="check">🔍 Check karo</button>
+      <button id="sample" class="light">Sample message</button>
+    </div>
 
-    <!-- ===== HOW IT WORKS ===== -->
-    <section id="how">
-      <h2>Kaise kaam karta hai?</h2>
-      <ol class="steps">
-        <li><strong>Rules:</strong> 13 tarah ke common Indian scam tricks (OTP, KYC, digital arrest, bijli, parcel, task job, AnyDesk…) ke patterns banaye gaye hain.</li>
-        <li><strong>Match:</strong> JavaScript RegExp se message me ye patterns dhoondhe jaate hain.</li>
-        <li><strong>Score:</strong> har trick ka ek weight hai; sab jodkar 0–100 risk score banta hai.</li>
-        <li><strong>Samjhao:</strong> match hue shabd highlight hote hain aur har trick ki Hinglish explanation milti hai. "Suno" button se sun bhi sakte hain.</li>
-      </ol>
-      <p class="help">Fraud ho gaya? Turant <strong>1930</strong> (National Cyber Helpline) par call karein ya <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a> par report karein.</p>
-    </section>
+    <!-- result yahan dikhega (script.js bharega) -->
+    <div id="result"></div>
   </main>
 
-  <!-- ===== FOOTER with KP watermark ===== -->
   <footer>
-    <img src="assets/logo-mark.svg" alt="KP logo" width="40" height="40">
-    <p>Made by <strong>Kanak Prabhakar</strong> · BCA (Cyber Security), AISECT University, Hazaribagh</p>
-    <p class="small">Multimedia Systems Practical (3IBCA504) · Guided by Mr. Prabhat Kumar · © <span id="year"></span> · <a href="privacy.html">Privacy &amp; Terms</a></p>
-    <p class="small">Ye ek educational tool hai; 100% sahi hone ki guarantee nahi. Shaq ho to official source se verify karein.</p>
+    Made by <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University ·
+    Fraud hua? Call <b>1930</b> · 🔒 Message kahin bheja nahi jaata
   </footer>
 
-  <script src="js/rules.js"></script>
-  <script src="js/app.js"></script>
+  <script src="script.js"></script> <!-- end me, taaki upar ka HTML pehle ban jaye -->
 </body>
 </html>

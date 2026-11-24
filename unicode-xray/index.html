@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Unicode X-Ray – Find Hidden and Fake Characters — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unicode X-Ray – Find Hidden and Fake Characters</title>
+  <meta name="description" content="Reveal invisible zero-width characters and look-alike letters (like Cyrillic а instead of Latin a) used in phishing and copied text.">
+  <meta property="og:title" content="Unicode X-Ray – Find Hidden and Fake Characters">
+  <meta property="og:description" content="Reveal invisible zero-width characters and look-alike letters (like Cyrillic а instead of Latin a) used in phishing and copied text.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="pink">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Unicode X-Ray</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">👻</div>
+      <p class="eyebrow">cyber security · homoglyphs</p>
+      <h1>Unicode <span>X-Ray</span></h1>
+      <p>Some text hides invisible characters, and some letters only look English. Paste any text to reveal them.</p>
+    </section>
+    <section class="card">
+      <textarea id="text" rows="4" maxlength="5000" aria-label="Text to check" placeholder="Paste a link, username or message…"></textarea>
+      <div class="btn-row">
+        <button id="scan">🔍 Reveal hidden characters</button>
+        <button id="sample" class="secondary">Try a fake "paypal.com"</button>
+      </div>
+      <div id="out" class="result" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>Text is checked in your browser and never sent anywhere · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+  <script src="script.js"></script>
+  <script src="../bg.js"></script>
+</body>
+</html>

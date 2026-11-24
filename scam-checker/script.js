@@ -1,4 +1,4 @@
-// script.js — the LOGIC of the Scam Message Checker
+// script.js — the LOGIC of the Scam Message Detector
 // Idea: scam messages reuse the same tricks (OTP, KYC, fear, prizes...).
 // Each trick is one "rule". The more rules a message matches, the higher the risk.
 // FLOW: button click → checkMessage() → match rules → score → show result
@@ -66,14 +66,21 @@ function checkMessage() {
   requestAnimationFrame(() => { box.querySelector(".meter span").style.width = score + "%"; });
 
   // ---------- 6. READ IT ALOUD (audio) ----------
-  // Built-in browser text-to-speech helps people who find reading hard.
-  if (!window.speechSynthesis) return;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(new SpeechSynthesisUtterance(title.replace(/[^\w\s:]/g, "") + ". " + reasons.join(" ")));
+  // Only on button click (browsers block sound that starts by itself),
+  // and the button only appears if this browser supports speech.
+  lastSpeech = title.replace(/[^\w\s:]/g, "") + ". " + reasons.join(" ");
+  document.getElementById("speak").hidden = !("speechSynthesis" in window);
 }
+let lastSpeech = "";
 
 // ---------- 7. BUTTONS ----------
 document.getElementById("check").onclick = checkMessage;
+document.getElementById("speak").onclick = function () {
+  speechSynthesis.cancel();                                   // stop anything still talking
+  const u = new SpeechSynthesisUtterance(lastSpeech);
+  u.lang = "en-IN";                                           // Indian English voice if the device has one
+  speechSynthesis.speak(u);
+};
 document.getElementById("sample").onclick = function () {
   document.getElementById("msg").value =
     "Dear customer, your SBI account will be blocked tonight. Update your KYC immediately: http://sbi-kyc.xyz and share the OTP.";

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Link X-Ray – Check a Link Before You Click — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link X-Ray – Check a Link Before You Click</title>
+  <meta name="description" content="Paste any link to see its real parts, the real website behind it, and phishing tricks like look-alike domains, @ tricks and shorteners.">
+  <meta property="og:title" content="Link X-Ray – Check a Link Before You Click">
+  <meta property="og:description" content="Paste any link to see its real parts, the real website behind it, and phishing tricks like look-alike domains, @ tricks and shorteners.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="violet">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Link X-Ray</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🔗</div>
+      <p class="eyebrow">cyber security · phishing links</p>
+      <h1>Link <span>X-Ray</span></h1>
+      <p>Paste a link from an SMS, email or WhatsApp. See where it really goes before you click.</p>
+    </section>
+    <section class="card">
+      <textarea id="url" rows="2" maxlength="2000" aria-label="Link to check" placeholder="e.g. http://sbi.co.in.verify-kyc.xyz/login?id=123"></textarea>
+      <div class="btn-row">
+        <button id="scan">🔍 X-Ray this link</button>
+        <button id="sample" class="secondary">Try a phishing sample</button>
+      </div>
+      <div id="out" class="result" aria-live="polite"></div>
+    </section>
+    <section class="card">
+      <h2>🕘 Link history (this visit only)</h2>
+      <p class="muted">Links you checked on this page. Nothing is saved: it clears when you close the tab.</p>
+      <ul id="history" class="history"><li class="muted">No links checked yet.</li></ul>
+    </section>
+  </main>
+
+  <footer>Links are analysed in your browser and never opened · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+  <script src="script.js"></script>
+  <script src="../bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Cipher Lab – Classic Encryption Playground — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cipher Lab – Classic Encryption Playground</title>
+  <meta name="description" content="Encrypt and decrypt with Caesar, ROT13, Vigenère, Atbash and Base64, and brute-force a Caesar message in one click.">
+  <meta property="og:title" content="Cipher Lab – Classic Encryption Playground">
+  <meta property="og:description" content="Encrypt and decrypt with Caesar, ROT13, Vigenère, Atbash and Base64, and brute-force a Caesar message in one click.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="amber">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Cipher Lab</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🔐</div>
+      <p class="eyebrow">cryptography · classic ciphers</p>
+      <h1>Cipher <span>Lab</span></h1>
+      <p>See how old ciphers work, and why they break so easily today.</p>
+    </section>
+    <section class="card">
+      <h2>Choose a cipher</h2>
+      <div class="seg" role="radiogroup" aria-label="Cipher">
+        <label><input type="radio" name="algo" value="caesar" checked> Caesar</label>
+        <label><input type="radio" name="algo" value="rot13"> ROT13</label>
+        <label><input type="radio" name="algo" value="vigenere"> Vigenère</label>
+        <label><input type="radio" name="algo" value="atbash"> Atbash</label>
+        <label><input type="radio" name="algo" value="base64"> Base64</label>
+      </div>
+      <div class="keyrow">
+        <label for="key">Key</label>
+        <input type="text" id="key" value="3" maxlength="40" autocomplete="off">
+        <small id="keyHint">Caesar: a number from 1 to 25</small>
+      </div>
+      <textarea id="plain" rows="3" maxlength="3000" aria-label="Input text">Attack at dawn</textarea>
+      <div class="btn-row">
+        <button id="enc">🔒 Encrypt</button>
+        <button id="dec" class="secondary">🔓 Decrypt</button>
+      </div>
+      <div id="out" class="quote" aria-live="polite"></div>
+    </section>
+    <section class="card">
+      <h2>💥 Break it: Caesar brute force</h2>
+      <p class="muted">Caesar has only 25 keys, so a computer simply tries them all. Paste a Caesar message:</p>
+      <textarea id="crack" rows="2" maxlength="1000" aria-label="Caesar message to crack">Dwwdfn dw gdzq</textarea>
+      <button id="crackBtn">⚡ Try all 25 keys</button>
+      <div id="crackOut" class="result"></div>
+    </section>
+  </main>
+
+  <footer>Everything runs in your browser · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+  <script src="script.js"></script>
+  <script src="../bg.js"></script>
+</body>
+</html>

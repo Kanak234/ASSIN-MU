@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Hash Lab – Fingerprints for Text and Files — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash Lab – Fingerprints for Text and Files</title>
+  <meta name="description" content="Make SHA-256 fingerprints of text or files, see the avalanche effect, and check whether a downloaded file was changed.">
+  <meta property="og:title" content="Hash Lab – Fingerprints for Text and Files">
+  <meta property="og:description" content="Make SHA-256 fingerprints of text or files, see the avalanche effect, and check whether a downloaded file was changed.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="green">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Hash Lab</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🧬</div>
+      <p class="eyebrow">cryptography · integrity</p>
+      <h1>Hash <span>Lab</span></h1>
+      <p>A hash is a file's fingerprint. Change one letter and the whole fingerprint changes.</p>
+    </section>
+    <section class="card">
+      <h2>1 · Hash some text</h2>
+      <textarea id="text" rows="3" maxlength="5000" aria-label="Text to hash">Hello Prabhat Sir</textarea>
+      <div id="textHash" class="hashes" aria-live="polite"></div>
+      <p class="muted">Try it: change just one letter above and watch every hash change completely. That's the <b>avalanche effect</b>.</p>
+    </section>
+    <section class="card">
+      <h2>2 · Verify a downloaded file</h2>
+      <label class="upload">📁 Choose any file
+        <input type="file" id="file">
+      </label>
+      <textarea id="expected" rows="2" maxlength="200" aria-label="Expected SHA-256" placeholder="Optional: paste the SHA-256 published on the download page"></textarea>
+      <div id="fileOut" class="result" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>Text and files are hashed in your browser and never uploaded · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+  <script src="script.js"></script>
+  <script src="../bg.js"></script>
+</body>
+</html>

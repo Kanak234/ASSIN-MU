@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Stego Studio – Hide a Secret Message Inside a Photo — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stego Studio – Hide a Secret Message Inside a Photo</title>
+  <meta name="description" content="Hide a secret text inside an image's pixels (LSB steganography) and read it back. The picture looks exactly the same.">
+  <meta property="og:title" content="Stego Studio – Hide a Secret Message Inside a Photo">
+  <meta property="og:description" content="Hide a secret text inside an image's pixels (LSB steganography) and read it back. The picture looks exactly the same.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="violet">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Stego Studio</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🖼️</div>
+      <p class="eyebrow">multimedia · steganography</p>
+      <h1>Stego <span>Studio</span></h1>
+      <p>Hide a secret message inside a picture. Nobody can see it, but this tool can read it back.</p>
+    </section>
+    <section class="card">
+      <h2>1 · Hide a message</h2>
+      <label class="upload">📁 Choose a cover image (JPG or PNG)
+        <input type="file" id="cover" accept="image/png,image/jpeg">
+      </label>
+      <textarea id="secret" rows="2" maxlength="500" aria-label="Secret message">Meet me at the library at 5 pm</textarea>
+      <button id="hide">🫥 Hide message and download PNG</button>
+      <div id="hideOut" class="result" aria-live="polite"></div>
+      <div class="pair" id="pair" hidden>
+        <figure><canvas id="before"></canvas><figcaption>Original</figcaption></figure>
+        <figure><canvas id="after"></canvas><figcaption>With secret (looks the same!)</figcaption></figure>
+      </div>
+    </section>
+    <section class="card">
+      <h2>2 · Reveal a message</h2>
+      <label class="upload">📁 Choose a PNG made by Stego Studio
+        <input type="file" id="stego" accept="image/png">
+      </label>
+      <div id="revealOut" class="result" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>Images are processed in your browser and never uploaded · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+  <script src="script.js"></script>
+  <script src="../bg.js"></script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- Scam Message Checker — structure. Shared look: ../style.css, logic: script.js -->
+<!-- Scam Message Detector — structure. Shared look: ../style.css, logic: script.js -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scam Message Checker</title>
+  <title>Scam Message Detector</title>
   <meta name="description" content="Paste an SMS or WhatsApp message to find out if it is a scam, with highlighted red flags and simple reasons.">
-  <meta property="og:title" content="Scam Message Checker">
+  <meta property="og:title" content="Scam Message Detector">
   <meta property="og:description" content="Paste an SMS or WhatsApp message to find out if it is a scam, with highlighted red flags and simple reasons.">
   <meta property="og:image" content="../preview.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -14,13 +14,13 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 <body data-accent="violet">
-  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Scam Message Checker</span></header>
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Scam Message Detector</span></header>
 
   <main class="wrap">
     <section class="hero">
       <div class="icon">🛡️</div>
       <p class="eyebrow">cyber security · message analysis</p>
-      <h1>Scam Message <span>Checker</span></h1>
+      <h1>Scam Message <span>Detector</span></h1>
       <p>Paste an SMS or WhatsApp message and find out within seconds whether it looks like a scam.</p>
     </section>
 
@@ -29,6 +29,7 @@
       <div class="btn-row">
         <button id="check">🔍 Check message</button>
         <button id="sample" class="secondary">Try a sample</button>
+        <button id="speak" class="secondary" hidden>🔊 Read aloud</button>
       </div>
       <div id="result" class="result" aria-live="polite"></div>
     </section>

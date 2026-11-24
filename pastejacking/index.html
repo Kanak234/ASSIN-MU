@@ -21,7 +21,7 @@
       <div class="icon">📋</div>
       <p class="eyebrow">cyber security · clipboard attack</p>
       <h1>Paste<span>jacking</span></h1>
-      <p>What you copy is not always what you paste. Try it yourself: it's a safe demo, and nothing runs.</p>
+      <p>What you copy is not always what you paste. Three live demos, a terminal simulation and a safe-paste scanner. It's all safe, and nothing ever runs.</p>
     </section>
 
     <section class="card">
@@ -38,9 +38,26 @@
     </section>
 
     <section class="card">
+      <h2>Demo 3 · The swapped UPI ID</h2>
+      <p class="muted">Real "clipboard hijacker" malware watches for payment IDs and swaps them. Copy this shop's UPI ID to pay them:</p>
+      <div class="code upi" id="code3">ramstore@okbank</div>
+      <button id="copy3">📋 Copy UPI ID</button>
+    </section>
+
+    <section class="card">
       <h2>Now paste here (Ctrl+V)</h2>
       <textarea id="paste" rows="3" maxlength="2000" aria-label="Paste area" placeholder="Paste what you copied…"></textarea>
       <div id="verdict" aria-live="polite"></div>
+      <!-- fake terminal: shows what WOULD happen (only an animation, nothing runs) -->
+      <div id="terminal" class="terminal" hidden aria-label="Simulated terminal"></div>
+    </section>
+
+    <section class="card">
+      <h2>🛡️ Safe Paste Scanner</h2>
+      <p class="muted">Before you paste a command into a real terminal, paste it here first. It looks for hidden and dangerous parts.</p>
+      <textarea id="scanIn" rows="3" maxlength="4000" aria-label="Command to scan" placeholder="Paste any command you copied from the internet…"></textarea>
+      <button id="scanBtn">🔍 Scan command</button>
+      <div id="scanOut" class="result" aria-live="polite"></div>
     </section>
 
     <section class="card">

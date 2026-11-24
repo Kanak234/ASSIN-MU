@@ -212,3 +212,55 @@ li.bad { list-style: none; border-left: 4px solid var(--bad); background: rgba(2
   .hero .icon { animation: none; }
   .project { transform: none !important; }
 }
+
+/* Pastejacking: fake terminal + scanner findings */
+.terminal { margin-top: 14px; background: #02030a; border: 1px solid var(--line); border-radius: 12px; padding: 14px;
+            font-family: var(--mono); font-size: .88rem; color: #cbd5e1; min-height: 120px; white-space: pre-wrap; word-break: break-all; }
+.terminal .t-red { color: #f87171; } .terminal .t-grn { color: #4ade80; } .terminal .t-dim { color: #64748b; }
+.terminal .cursor { display: inline-block; width: 8px; height: 1em; background: #4ade80; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.finding { font-family: var(--mono); font-size: .86rem; }
+
+/* ---------- 13. New tools ---------- */
+/* Link X-Ray */
+.url-parts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-family: var(--mono); font-size: .88rem; margin-top: 10px; }
+.url-parts dt { color: var(--muted); }
+.url-parts dd { margin: 0; word-break: break-all; }
+.url-parts .real { color: #ffd166; font-weight: 700; }
+.history { padding-left: 18px; font-family: var(--mono); font-size: .86rem; }
+.history li { margin-bottom: 4px; word-break: break-all; }
+.pill { display: inline-block; font-family: var(--mono); font-size: .72rem; padding: 0 .5rem; border-radius: 999px; margin-left: 6px; }
+.pill.good { background: rgba(74, 222, 128, .15); color: var(--good); }
+.pill.warn { background: rgba(251, 191, 36, .15); color: var(--warn); }
+.pill.bad  { background: rgba(248, 113, 113, .15); color: var(--bad); }
+/* Hash Lab */
+.hashes { display: grid; gap: 8px; margin-top: 12px; }
+.hash { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-family: var(--mono); font-size: .8rem; word-break: break-all; }
+.hash b { display: block; color: var(--accent); font-size: .72rem; margin-bottom: 2px; }
+textarea + .result, .upload + textarea { margin-top: 12px; }
+/* Cipher Lab */
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg label { cursor: pointer; padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 999px; font-size: .9rem; }
+.seg label:has(input:checked) { border-color: var(--c1); background: rgba(255, 138, 61, .12); }
+.seg input { accent-color: var(--c1); }
+.keyrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 14px 0; }
+.keyrow input { padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel-2); color: var(--text); font: inherit; width: 170px; }
+#out:empty { display: none; }
+#out.quote { margin-top: 12px; font-family: var(--mono); }
+.crack-list { list-style: none; padding: 0; margin: 10px 0 0; font-family: var(--mono); font-size: .85rem; max-height: 320px; overflow: auto; }
+.crack-list li { padding: 4px 8px; border-radius: 6px; }
+.crack-list li.best { background: rgba(74, 222, 128, .15); color: var(--good); font-weight: 700; }
+/* Unicode X-Ray */
+.chars { line-height: 2.2; font-family: var(--mono); word-break: break-all; }
+.ch-zw { background: #f87171; color: #000; border-radius: 4px; padding: 1px 4px; font-size: .75rem; }
+.ch-fake { background: #fbbf24; color: #000; border-radius: 4px; padding: 0 3px; }
+/* Stego Studio */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.pair figure { margin: 0; text-align: center; }
+.pair canvas { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+.pair figcaption { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+/* Spot the Phish */
+.game-top { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.mono-chip { font-family: var(--mono); font-size: .8rem; border: 1px solid var(--line-2); padding: .15rem .7rem; border-radius: 999px; color: var(--accent); }
+.q { min-height: 90px; font-size: 1.02rem; }
+.q .from { display: block; font-family: var(--mono); font-size: .78rem; color: var(--muted); margin-bottom: 6px; }

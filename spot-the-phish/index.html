@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Spot the Phish – Real or Fake? A Quick Game — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spot the Phish – Real or Fake? A Quick Game</title>
+  <meta name="description" content="A quick game: 8 messages and links. Decide which are real and which are phishing, and learn the clue behind each one.">
+  <meta property="og:title" content="Spot the Phish – Real or Fake? A Quick Game">
+  <meta property="og:description" content="A quick game: 8 messages and links. Decide which are real and which are phishing, and learn the clue behind each one.">
+  <meta property="og:image" content="../preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="amber">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Spot the Phish</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🎣</div>
+      <p class="eyebrow">cyber security · awareness game</p>
+      <h1>Spot the <span>Phish</span></h1>
+      <p>8 rounds. Real or fake? Every answer teaches you one clue scammers leave behind.</p>
+    </section>
+    <section class="card game">
+      <div class="game-top"><span id="round" class="mono-chip">Round 1 / 8</span><span id="score" class="mono-chip">Score 0</span></div>
+      <div id="q" class="quote q"></div>
+      <div class="btn-row">
+        <button id="real">✅ Real</button>
+        <button id="fake" class="secondary">🎣 Phishing</button>
+      </div>
+      <div id="fb" class="result" aria-live="polite"></div>
+      <button id="next" class="secondary" hidden>Next →</button>
+    </section>
+  </main>
+
+  <footer>A learning game; all brands, numbers and links in it are made up or reserved examples · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></footer>
+  <script src="script.js"></script>
+  <script src="../bg.js"></script>
+</body>
+</html>

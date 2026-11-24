@@ -1,28 +1,11 @@
-# SandeshKavach – Scam Message Checker 🛡️
+# Browser Jasoos – What Your Browser Reveals About You 🕵️
 
-Paste an SMS or WhatsApp message and find out in 1 second whether it is a scam. The website highlights the suspicious words, shows a risk score, explains the reasons in simple Hinglish, and reads the result aloud.
+Opening the page is enough: with no permission popup, it shows what any website can read about your device. That includes OS, browser, screen, time zone, languages, CPU cores, RAM, GPU name, battery and network type. It then combines everything into a unique **fingerprint ID**.
 
-**Multimedia Systems Practical (3IBCA504)** · Kanak Prabhakar, BCA (Cyber Security), AISECT University · Faculty: Mr. Prabhat Kumar
+**Files:** `index.html` · `style.css` · `script.js` (reads `navigator`, `screen`, WebGL, a canvas fingerprint and the Battery API, then hashes them with FNV-1a)
 
-## Files (just 3)
-| File | Kaam |
-|---|---|
-| `index.html` | Page structure: textbox, buttons, result box |
-| `style.css` | Look and colours (green = safe, yellow = suspicious, red = scam) |
-| `script.js` | Logic: 8 rules → score → highlight → speech |
+**Why it matters:** websites can recognise you again even without cookies or in incognito mode. The page also lists protection tips.
 
-## How it works
-1. There are 8 rules, one for each scam trick (OTP, KYC, digital arrest, bijli, lottery, urgency, link, AnyDesk). Each rule has a regex and points.
-2. The points of every matched rule are added up, and the score is capped at 100. A score of 50 or more is SCAM, 20–49 is suspicious, and below 20 is safe.
-3. The matched words are wrapped in `<mark>` so they show up highlighted.
-4. The text is HTML-escaped first, which protects against XSS attacks.
-5. `speechSynthesis` reads the result aloud, so people who cannot read well can still use it.
+**Run:** open `index.html`. **Deploy:** Vercel → import repo → choose this branch → Framework "Other" → Deploy. Nothing is sent or stored.
 
-## Multimedia
-Text · Graphics (logo, colours) · Audio (text-to-speech) · Interactivity
-
-## Run / Deploy
-- **Local:** double-click `index.html`.
-- **Vercel:** Add New → Project → import this repo → Framework "Other" → Deploy. No build step is needed.
-
-The message never leaves the browser.
+Made by Kanak Prabhakar · BCA (Cyber Security), AISECT University

@@ -1,43 +1,23 @@
-/* style.css — website ka LOOK.
-   Rang ka matlab: hara = safe, peela = shaq, laal = scam (traffic light jaisa) */
+/* style.css — the LOOK of "Browser Jasoos". Green "spy terminal" theme */
+body { margin: 0; font-family: system-ui, sans-serif; background: #050b08; color: #d1fae5; text-align: center; }
+main { max-width: 700px; margin: auto; padding: 36px 16px; }
+h1 { font-size: 2.4rem; margin: 6px 0 0; }
+h1 span { color: #34d399; }
+.sub { color: #86a89a; }
 
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #0f172a;          /* dark navy background */
-  color: #e2e8f0;
-  text-align: center;
-}
-main { max-width: 640px; margin: auto; padding: 40px 16px; }
+.card { background: #0b1a13; border: 1px solid #14532d; border-radius: 14px; padding: 18px; margin: 18px 0; text-align: left; }
+.card h2 { margin: 0 0 12px; font-size: 1.2rem; }
 
-h1 { font-size: 2.4rem; margin: 8px 0 0; }
-h1 span { color: #38bdf8; }     /* "Kavach" blue me */
-.sub { color: #94a3b8; }
+/* big fingerprint ID */
+.id-card { text-align: center; }
+.id-card p { margin: 0; color: #86a89a; }
+#fpId { font-family: ui-monospace, Consolas, monospace; font-size: 2rem; color: #34d399; letter-spacing: 2px; margin: 6px 0; }
 
-textarea {
-  width: 100%; box-sizing: border-box;
-  padding: 14px; border-radius: 12px; border: 1px solid #334155;
-  background: #1e293b; color: inherit; font: inherit; font-size: 1rem;
-}
-
-.buttons { display: flex; gap: 10px; margin: 12px 0; }
-button {
-  flex: 1; padding: 12px; border: 0; border-radius: 12px;
-  font-size: 1rem; font-weight: 600; cursor: pointer;
-  background: #38bdf8; color: #0f172a;
-}
-button.light { background: #334155; color: #e2e8f0; }
-button:hover { opacity: .9; }
-
-/* ---- result box: class (safe/warn/danger) script.js lagata hai ---- */
-#result { text-align: left; border-radius: 12px; }
-#result.safe   { background: #14532d; padding: 16px; }
-#result.warn   { background: #713f12; padding: 16px; }
-#result.danger { background: #7f1d1d; padding: 16px; }
-#result h2 { margin: 0 0 8px; }
-#result li { margin-bottom: 6px; }
-
-/* shaq wale shabd highlight */
-mark { background: #fde047; color: #000; border-radius: 4px; padding: 0 3px; }
-
-footer { color: #64748b; font-size: .85rem; padding: 20px; }
+/* one leaked detail */
+.row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #14532d; }
+.row:last-child { border-bottom: 0; }
+.icon { font-size: 1.5rem; }
+.val { margin: 2px 0; font-family: ui-monospace, Consolas, monospace; color: #fde68a; word-break: break-word; }
+.row small { color: #86a89a; }
+li { margin-bottom: 6px; }
+footer { color: #4b6b5d; font-size: .85rem; padding: 20px; }

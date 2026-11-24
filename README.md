@@ -1,21 +1,26 @@
-# KP Cyber Lab – 3 Mini Privacy & Security Tools 🛡️
+# Web Mini-Projects – Multimedia Systems Practical (3IBCA504)
 
-Three small browser tools that show three big everyday risks. **Multimedia Systems Practical (3IBCA504)**, AISECT University.
+Five small web projects built with **plain HTML, CSS and JavaScript**: no frameworks, no libraries and no server. They share one design file, `style.css`.
 
-| Tool | Folder | Shows |
+| Project | Folder | What it does |
 |---|---|---|
-| 📷 Post Se Pehle | `post-se-pehle/` | Hidden GPS location in photos + caption oversharing |
-| 🕵️ Browser Jasoos | `browser-jasoos/` | Browser fingerprinting without permission |
-| 📋 Pastejacking Demo | `pastejacking-demo/` | Clipboard hijacking (safe demo) |
+| 🪐 Antariksh | `antariksh/` | Interactive solar system: canvas orbit animation, planet facts, generated space sound, video, quiz |
+| 🛡️ Scam Message Checker | `scam-checker/` | Highlights scam red flags in an SMS/WhatsApp message, gives a risk score and reads the result aloud |
+| 📷 Post Se Pehle | `post-se-pehle/` | Reads the hidden EXIF data in a photo (GPS location, phone, time), makes a safe copy, checks captions for oversharing |
+| 🕵️ Browser Jasoos | `browser-jasoos/` | Shows what any website can read about your device, plus a fingerprint ID |
+| 📋 Pastejacking Demo | `pastejacking/` | Safe live demo of clipboard hijacking (copy event + invisible text) |
 
-Built with plain HTML, CSS and JavaScript only. Everything runs in the browser, with no server and no data collection.
+## Multimedia elements covered
+Text · Graphics (SVG/Canvas) · Animation · Audio (Web Audio API, text-to-speech) · Video (HTML5) · Interactivity
 
-## Branches
-- `main` — all three tools together (this page)
-- `post-se-pehle`, `browser-jasoos`, `pastejacking-demo` — each tool on its own, for separate Vercel deploys
+## Run
+Open `index.html` in any browser.
 
-## Run / Deploy
-- **Local:** open `index.html`.
-- **Vercel:** Add New → Project → import `Kanak234/ASSIN-MU` → Framework "Other" → Deploy. To deploy a single tool, set that branch as the Production Branch in Settings → Git, or create a separate Vercel project for it.
+## Deploy on Vercel
+Add New → Project → import `Kanak234/ASSIN-MU` → Framework **Other** → Deploy. No build step is needed.
 
-Made by Kanak Prabhakar · BCA (Cyber Security), AISECT University · Faculty: Mr. Prabhat Kumar
+## Privacy
+Everything runs inside the browser. No data is uploaded, stored or tracked.
+
+---
+Kanak Prabhakar · BCA (Cyber Security), AISECT University, Hazaribagh · Faculty: Mr. Prabhat Kumar

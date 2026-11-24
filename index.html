@@ -1,43 +1,54 @@
 <!DOCTYPE html>
-<!-- index.html — HOME page of "KP Cyber Lab": links to the 3 mini tools.
-     Each tool lives in its own folder with its own index.html, style.css and script.js. -->
+<!-- index.html — HOME page: one card per mini-project. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KP Cyber Lab – 3 Mini Privacy & Security Tools</title>
-  <meta name="description" content="Three small browser tools that show big privacy risks: hidden photo location, browser fingerprinting and pastejacking.">
-  <link rel="icon" href="assets/logo-mark.svg">
+  <title>Multimedia Systems Mini-Projects – Kanak Prabhakar</title>
+  <meta name="description" content="Five small web projects built with HTML, CSS and JavaScript: a solar system explorer, a scam message checker, a photo privacy checker, a browser fingerprint demo and a pastejacking demo.">
+  <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <img src="assets/logo-mark.svg" alt="KP logo" width="64" height="64">
-    <h1>KP Cyber <span>Lab</span></h1>
-    <p class="sub">Three small tools. Three big privacy risks you face every day. Pick one 👇</p>
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🧪</div>
+      <h1>Web <span>Mini-Projects</span></h1>
+      <p>Five small projects built with plain HTML, CSS and JavaScript. One explores space, and four show everyday cyber-security risks.</p>
+    </section>
 
     <div class="grid">
-      <a class="tool pink" href="post-se-pehle/index.html">
-        <span class="emoji">📷</span>
-        <h2>Post Se Pehle</h2>
-        <p>Your photo may hide your exact GPS location. Check a photo and a caption before you post.</p>
+      <a class="project" href="antariksh/index.html" style="--c:#6ea8ff">
+        <span class="emoji">🪐</span><h2>Antariksh</h2>
+        <p>Interactive solar system: live orbit animation, planet facts, sound, video and a quiz.</p>
+        <span class="go">Open →</span>
       </a>
-      <a class="tool green" href="browser-jasoos/index.html">
-        <span class="emoji">🕵️</span>
-        <h2>Browser Jasoos</h2>
-        <p>See what every website learns about your device without asking, plus your unique fingerprint ID.</p>
+      <a class="project" href="scam-checker/index.html" style="--c:#a78bfa">
+        <span class="emoji">🛡️</span><h2>Scam Message Checker</h2>
+        <p>Paste an SMS or WhatsApp message to see if it is a scam, and why.</p>
+        <span class="go">Open →</span>
       </a>
-      <a class="tool amber" href="pastejacking-demo/index.html">
-        <span class="emoji">📋</span>
-        <h2>Pastejacking Demo</h2>
-        <p>What you copy is not what you paste. A safe live demo of a real terminal attack.</p>
+      <a class="project" href="post-se-pehle/index.html" style="--c:#f472b6">
+        <span class="emoji">📷</span><h2>Post Se Pehle</h2>
+        <p>Your photo can hide your exact GPS location. Check it before you post.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="project" href="browser-jasoos/index.html" style="--c:#34d399">
+        <span class="emoji">🕵️</span><h2>Browser Jasoos</h2>
+        <p>What every website learns about your device without asking.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="project" href="pastejacking/index.html" style="--c:#fbbf24">
+        <span class="emoji">📋</span><h2>Pastejacking Demo</h2>
+        <p>What you copy is not always what you paste. A safe live demo.</p>
+        <span class="go">Open →</span>
       </a>
     </div>
   </main>
 
   <footer>
-    Made by <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University ·
-    Multimedia Systems Practical (3IBCA504) · 🔒 Everything runs in your browser.
+    <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University, Hazaribagh<br>
+    Multimedia Systems Practical (3IBCA504) · Faculty: Mr. Prabhat Kumar
   </footer>
 </body>
 </html>

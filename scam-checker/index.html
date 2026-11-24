@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Scam Message Checker — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scam Message Checker</title>
+  <meta name="description" content="Paste an SMS or WhatsApp message to find out if it is a scam, with highlighted red flags and simple reasons.">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="violet">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Scam Message Checker</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🛡️</div>
+      <h1>Scam Message <span>Checker</span></h1>
+      <p>Paste an SMS or WhatsApp message and find out in one second whether it is a scam.</p>
+    </section>
+
+    <section class="card">
+      <textarea id="msg" rows="5" aria-label="Message to check" placeholder="e.g. Your account will be blocked today. Share the OTP immediately…"></textarea>
+      <div class="btn-row">
+        <button id="check">🔍 Check message</button>
+        <button id="sample" class="secondary">Try a sample</button>
+      </div>
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+
+    <p class="muted" style="text-align:center">Lost money to fraud? Call <b>1930</b> or report at cybercrime.gov.in</p>
+  </main>
+
+  <footer>Your message never leaves your browser.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

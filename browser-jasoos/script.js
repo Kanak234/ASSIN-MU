@@ -67,7 +67,7 @@ function collect() {
   const ctx = c.getContext("2d");
   ctx.font = "16px Arial";
   ctx.fillStyle = "#f60"; ctx.fillRect(0, 0, 220, 40);
-  ctx.fillStyle = "#069"; ctx.fillText("Browser Jasoos 🕵️ KP", 4, 26);
+  ctx.fillStyle = "#069"; ctx.fillText("Browser Jasoos 🕵️ 2026", 4, 26);
   facts.push("canvas=" + hash(c.toDataURL()));
 }
 
@@ -95,5 +95,5 @@ collect();
 battery().finally(() => {
   // ID from everything except battery (battery changes, so it would change the ID)
   const stable = facts.filter(f => !f.startsWith("Battery"));
-  document.getElementById("fpId").textContent = "KP-" + hash(stable.join("|")).toUpperCase();
+  document.getElementById("fpId").textContent = "ID-" + hash(stable.join("|")).toUpperCase();
 });

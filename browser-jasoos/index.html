@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<!-- index.html — STRUCTURE of "Browser Jasoos" (Browser Spy).
-     Look → style.css, logic → script.js -->
+<!-- Browser Jasoos — structure. Shared look: ../style.css, logic: script.js -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browser Jasoos – What Your Browser Reveals About You</title>
-  <meta name="description" content="See what any website can learn about your device without asking: screen, GPU, battery, timezone, and a unique fingerprint ID.">
-  <link rel="icon" href="assets/logo-mark.svg">
-  <link rel="stylesheet" href="style.css">
+  <title>Browser Jasoos – What Your Browser Reveals</title>
+  <meta name="description" content="See what any website can learn about your device without asking, plus your unique browser fingerprint ID.">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
 </head>
-<body>
-  <main>
-    <img src="assets/logo-mark.svg" alt="KP logo" width="56" height="56">
-    <h1>Browser <span>Jasoos</span></h1>
-    <p class="sub">You clicked nothing and allowed nothing, yet this page already knows all of this about your device 👇</p>
+<body data-accent="green">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Browser Jasoos</span></header>
 
-    <!-- the unique fingerprint ID -->
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">🕵️</div>
+      <h1>Browser <span>Jasoos</span></h1>
+      <p>You clicked nothing and allowed nothing, yet this page already knows all of this about your device.</p>
+    </section>
+
     <section class="card id-card">
-      <p>Your browser fingerprint ID</p>
+      <p class="muted">Your browser fingerprint ID</p>
       <h2 id="fpId">calculating…</h2>
       <small>Websites can use an ID like this to recognise you again, even in incognito mode and without cookies.</small>
     </section>
 
-    <!-- list of leaked details (filled by script.js) -->
     <section class="card">
       <h2>What leaked</h2>
       <div id="list"></div>
@@ -31,20 +32,16 @@
 
     <section class="card">
       <h2>How to protect yourself</h2>
-      <ul>
+      <ul class="reasons">
         <li>Use a privacy-focused browser (Firefox with strict tracking protection, or Brave).</li>
         <li>Keep your browser updated and remove extensions you don't use.</li>
-        <li>Don't grant location, camera or notification permission to unknown sites.</li>
-        <li>Use a different browser for banking and for casual browsing.</li>
+        <li>Don't give location, camera or notification permission to unknown sites.</li>
+        <li>Use a separate browser for banking.</li>
       </ul>
     </section>
   </main>
 
-  <footer>
-    Made by <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University ·
-    🔒 Nothing is sent or stored. Everything is shown only to you, on your device.
-  </footer>
-
+  <footer>Nothing is sent or stored. Everything is shown only to you.</footer>
   <script src="script.js"></script>
 </body>
 </html>

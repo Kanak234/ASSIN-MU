@@ -1,45 +1,41 @@
 <!DOCTYPE html>
-<!-- index.html — STRUCTURE of "Post Se Pehle" (Check Before You Post).
-     Look → style.css, logic → script.js -->
+<!-- Post Se Pehle — structure. Shared look: ../style.css, logic: script.js -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Post Se Pehle – Photo & Caption Privacy Checker</title>
-  <meta name="description" content="Upload a photo to see the hidden data inside it (GPS location, phone model, time) and check your caption for oversharing before you post.">
-  <link rel="icon" href="assets/logo-mark.svg">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="See the hidden data inside a photo (GPS location, phone model, time) and check a caption for oversharing before you post.">
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
 </head>
-<body>
-  <main>
-    <img src="assets/logo-mark.svg" alt="KP logo" width="56" height="56">
-    <h1>Post Se <span>Pehle</span></h1>
-    <p class="sub">Check before you post: what secrets are your photo and caption giving away?</p>
+<body data-accent="pink">
+  <header class="topbar"><a class="home" href="../index.html">← All projects</a><span class="tag">Post Se Pehle</span></header>
 
-    <!-- STEP 1: photo -->
-    <section class="card">
-      <h2>1. Photo check</h2>
-      <label class="upload">
-        📷 Choose a photo (JPG)
-        <input type="file" id="photo" accept="image/jpeg">
-      </label>
-      <div id="photoResult"></div>
+  <main class="wrap">
+    <section class="hero">
+      <div class="icon">📷</div>
+      <h1>Post Se <span>Pehle</span></h1>
+      <p>Check before you post: what secrets are your photo and caption giving away?</p>
     </section>
 
-    <!-- STEP 2: caption -->
     <section class="card">
-      <h2>2. Caption check</h2>
-      <textarea id="caption" rows="3" placeholder="e.g. Off to Goa for a week from tomorrow ✈️ house is empty 😂"></textarea>
+      <h2>1 · Photo check</h2>
+      <label class="upload">📁 Choose a photo (JPG)
+        <input type="file" id="photo" accept="image/jpeg">
+      </label>
+      <div id="photoResult" class="result"></div>
+    </section>
+
+    <section class="card">
+      <h2>2 · Caption check</h2>
+      <textarea id="caption" rows="3" aria-label="Caption to check" placeholder="e.g. Off to Goa for a week from tomorrow ✈️ house is empty 😂"></textarea>
       <button id="checkCaption">🔍 Check caption</button>
-      <div id="captionResult"></div>
+      <div id="captionResult" class="result" aria-live="polite"></div>
     </section>
   </main>
 
-  <footer>
-    Made by <b>Kanak Prabhakar</b> · BCA (Cyber Security), AISECT University ·
-    🔒 Your photo and caption are checked inside your browser and never uploaded.
-  </footer>
-
+  <footer>Your photo and caption are checked inside your browser and never uploaded.</footer>
   <script src="script.js"></script>
 </body>
 </html>

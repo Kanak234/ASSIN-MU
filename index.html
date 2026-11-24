@@ -1,127 +1,86 @@
 <!DOCTYPE html>
 <!-- =====================================================================
-     index.html — STRUCTURE of the website (what is on the page)
-     WHY:  HTML only describes content (headings, buttons, canvas, video).
-           Look = style.css, behaviour = js/*.js. Keeping them separate
-           is the standard "separation of concerns" rule.
-     FLOW: browser reads this top→bottom → loads CSS in <head> →
-           builds sections → finally loads JS files at the bottom.
+     index.html — PAGE STRUCTURE
+     WHY:  HTML = only content/structure. Look → css/style.css,
+           logic → js/rules.js + js/app.js.
+     FLOW: browser reads this → loads CSS → shows page → loads JS at end
+           (rules.js FIRST because app.js uses RULES).
      ===================================================================== -->
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- viewport = makes the site fit phone screens (responsive) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO: title + description shown in Google results -->
-  <title>Antariksh – Interactive Solar System Explorer</title>
-  <meta name="description" content="Explore the 8 planets of our solar system with a live orbit animation, planet facts, space sound, a video and a quiz. Made by Kanak Prabhakar.">
+  <title>SandeshKavach – Scam Message Decoder</title>
+  <meta name="description" content="Paste any SMS or WhatsApp message. SandeshKavach highlights scam red-flags (KYC, OTP, digital arrest, bijli cut, fake job) and explains them in simple Hinglish.">
   <meta name="author" content="Kanak Prabhakar">
-  <!-- Social preview (WhatsApp/LinkedIn link cards) -->
-  <meta property="og:title" content="Antariksh – Interactive Solar System Explorer">
-  <meta property="og:description" content="Live orbit animation, planet facts, space sound, video and quiz.">
+  <meta property="og:title" content="SandeshKavach – Scam Message Decoder">
+  <meta property="og:description" content="Check whether an SMS/WhatsApp message is a scam — with reasons in simple Hinglish.">
   <meta property="og:image" content="assets/preview.png">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Skip link: keyboard users can jump straight to content (accessibility) -->
-  <a class="skip" href="#explore">Skip to content</a>
+  <a class="skip" href="#checker">Skip to checker</a>
 
-  <!-- ================= HEADER / NAVIGATION ================= -->
+  <!-- ===== HEADER ===== -->
   <header class="topbar">
-    <a href="#home" class="brand" aria-label="Antariksh home">
-      <img src="assets/logo-mark.svg" alt="" width="34" height="34"> Antariksh
-    </a>
-    <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">☰</button>
-    <nav id="nav">
-      <a href="#explore">Explore</a>
-      <a href="#video">Video</a>
-      <a href="#quiz-section">Quiz</a>
-      <a href="#about">About</a>
-      <button id="themeBtn" class="btn small">☀️ Light</button>
-    </nav>
+    <a href="#" class="brand"><img src="assets/logo-mark.svg" alt="" width="32" height="32"> SandeshKavach</a>
+    <nav><a href="#checker">Check</a><a href="#how">Kaise kaam karta hai</a><a href="privacy.html">Privacy</a></nav>
   </header>
 
   <main>
-    <!-- ================= HERO ================= -->
-    <section id="home" class="hero">
-      <h1>Antariksh <span>अन्तरिक्ष</span></h1>
-      <p>A journey through our solar system — watch the planets move, tap any planet to learn about it, listen to space, and test yourself.</p>
-      <a href="#explore" class="btn">Start exploring 🚀</a>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <h1>Ye message <span>scam</span> to nahi?</h1>
+      <p>SMS ya WhatsApp message paste karein. SandeshKavach shaq wale shabd highlight karega aur simple bhasha me batayega <strong>kyun</strong>.</p>
     </section>
 
-    <!-- ================= ORBIT ANIMATION (canvas) ================= -->
-    <section id="explore" class="explorer reveal">
-      <h2>Live Solar System</h2>
-      <p class="hint">Tap a planet (or use the buttons) to see its details. Sizes and distances are not to real scale.</p>
-
-      <div class="explorer-grid">
-        <div class="canvas-wrap">
-          <!-- canvas = drawing surface; orbit.js paints on it 60× per second -->
-          <canvas id="orbitCanvas" role="img" aria-label="Animated solar system with 8 planets orbiting the sun"></canvas>
-        </div>
-        <!-- aria-live → screen reader announces new planet info -->
-        <aside id="infoPanel" class="info" aria-live="polite">
-          <h3>Select a planet</h3>
-          <p>Click any planet in the animation or choose one from the list below.</p>
-        </aside>
+    <!-- ===== CHECKER (single clear CTA) ===== -->
+    <section id="checker" class="card">
+      <label for="msg"><strong>Message yahan paste karein</strong></label>
+      <textarea id="msg" rows="6" maxlength="2000" placeholder="Jaise: Aapka account aaj block ho jayega, KYC update karein…"></textarea>
+      <div class="row">
+        <button id="checkBtn" class="btn" type="button">🔍 Check karein</button>
+        <button id="clearBtn" class="btn ghost" type="button">Saaf karein</button>
+        <small class="hint">Shortcut: Ctrl + Enter</small>
       </div>
-
-      <div class="controls">
-        <button id="playBtn" class="btn small" aria-pressed="false">⏸ Pause</button>
-        <label for="speed">Speed</label>
-        <input id="speed" type="range" min="0.2" max="5" step="0.1" value="1">
-        <output id="speedVal">1×</output>
-        <button id="soundBtn" class="btn small" aria-pressed="false">🔇 Sound off</button>
+      <!-- Demo samples — useful when showing to sir -->
+      <div class="samples" aria-label="Sample messages">
+        <span>Sample try karein:</span>
+        <button type="button" data-sample="kyc">KYC</button>
+        <button type="button" data-sample="bijli">Bijli bill</button>
+        <button type="button" data-sample="arrest">Digital arrest</button>
+        <button type="button" data-sample="job">Task job</button>
+        <button type="button" data-sample="safe">Normal message</button>
       </div>
-      <div id="planetList" class="chips" aria-label="Planet list"></div>
+      <p class="privacy-note">🔒 Aapka message kahin bheja nahi jaata — sab kuch aapke browser me hi check hota hai.</p>
     </section>
 
-    <!-- ================= VIDEO ================= -->
-    <section id="video" class="reveal">
-      <h2>Watch: A Day Around the Sun</h2>
-      <p class="hint">A short original animation made for this project.</p>
-      <!-- controls = play/pause/volume bar; muted+playsinline = works on phones -->
-      <video controls muted playsinline preload="metadata" poster="assets/preview.png" width="640">
-        <source src="assets/intro.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
-    </section>
+    <!-- ===== RESULT (filled by app.js) ===== -->
+    <section id="result" class="card" hidden aria-live="polite"></section>
 
-    <!-- ================= QUIZ ================= -->
-    <section id="quiz-section" class="reveal">
-      <h2>Space Quiz</h2>
-      <div id="quiz" class="quiz-box"></div>
-    </section>
-
-    <!-- ================= ABOUT ================= -->
-    <section id="about" class="reveal">
-      <h2>About this project</h2>
-      <p>Mini-project for <strong>Multimedia Systems Practical (3IBCA504)</strong>. It combines the main multimedia elements:</p>
-      <ul class="elements">
-        <li><strong>Text</strong> — planet facts and quiz</li>
-        <li><strong>Graphics</strong> — planets drawn with SVG and Canvas</li>
-        <li><strong>Animation</strong> — real-time orbits with requestAnimationFrame</li>
-        <li><strong>Audio</strong> — ambient sound generated live with the Web Audio API</li>
-        <li><strong>Video</strong> — HTML5 video player</li>
-        <li><strong>Interactivity</strong> — click, slider, quiz, theme switch</li>
-      </ul>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how">
+      <h2>Kaise kaam karta hai?</h2>
+      <ol class="steps">
+        <li><strong>Rules:</strong> 13 tarah ke common Indian scam tricks (OTP, KYC, digital arrest, bijli, parcel, task job, AnyDesk…) ke patterns banaye gaye hain.</li>
+        <li><strong>Match:</strong> JavaScript RegExp se message me ye patterns dhoondhe jaate hain.</li>
+        <li><strong>Score:</strong> har trick ka ek weight hai; sab jodkar 0–100 risk score banta hai.</li>
+        <li><strong>Samjhao:</strong> match hue shabd highlight hote hain aur har trick ki Hinglish explanation milti hai. "Suno" button se sun bhi sakte hain.</li>
+      </ol>
+      <p class="help">Fraud ho gaya? Turant <strong>1930</strong> (National Cyber Helpline) par call karein ya <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a> par report karein.</p>
     </section>
   </main>
 
-  <!-- ================= FOOTER with KP watermark ================= -->
+  <!-- ===== FOOTER with KP watermark ===== -->
   <footer>
-    <img src="assets/logo-mark.svg" alt="KP logo" width="40" height="40" class="watermark">
+    <img src="assets/logo-mark.svg" alt="KP logo" width="40" height="40">
     <p>Made by <strong>Kanak Prabhakar</strong> · BCA (Cyber Security), AISECT University, Hazaribagh</p>
-    <p class="small">Guided by Mr. Prabhat Kumar · © <span id="year"></span> · Planet facts: NASA Solar System Exploration (public information). All graphics, sound and video are original.</p>
+    <p class="small">Multimedia Systems Practical (3IBCA504) · Guided by Mr. Prabhat Kumar · © <span id="year"></span> · <a href="privacy.html">Privacy &amp; Terms</a></p>
+    <p class="small">Ye ek educational tool hai; 100% sahi hone ki guarantee nahi. Shaq ho to official source se verify karein.</p>
   </footer>
 
-  <!-- JS at the END so the HTML above already exists when scripts run.
-       ORDER MATTERS: data → orbit → audio → quiz → main -->
-  <script src="js/data.js"></script>
-  <script src="js/orbit.js"></script>
-  <script src="js/audio.js"></script>
-  <script src="js/quiz.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/rules.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

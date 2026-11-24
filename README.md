@@ -1,51 +1,51 @@
-# Antariksh – Interactive Solar System Explorer 🚀
+# SandeshKavach – Scam Message Decoder 🛡️
 
-Mini-project for the **Multimedia Systems Practical (3IBCA504)**, AISECT University, Hazaribagh.
+Paste any SMS or WhatsApp message. SandeshKavach **highlights the scam red-flags** (OTP, KYC, digital arrest, bijli cut, parcel, task job, AnyDesk, unknown links…), gives a **0–100 risk score**, and **explains in simple Hinglish** why the message is suspicious. A "Suno" button reads the result aloud.
+
+Mini-project for **Multimedia Systems Practical (3IBCA504)**, AISECT University, Hazaribagh.
 **Student:** Kanak Prabhakar (BCA, Cyber Security) · **Faculty:** Mr. Prabhat Kumar
 
-Built with plain **HTML, CSS and JavaScript**. No frameworks and no libraries.
+## Why this project
+Most scam checkers only say "safe" or "unsafe", or they check a URL. Indian scam messages, though, are often in Hinglish and run on fear tricks ("account block", "digital arrest", "bijli kategi"). This tool shows **which words** are the trick and **why**, so non-technical people (parents, shopkeepers) can learn to spot scams themselves.
 
-## How to run
-1. Download or clone this repo.
-2. Double-click `index.html`. It opens in any modern browser (Chrome, Edge, Firefox).
-   No server or internet connection is needed.
+## Run locally
+Double-click `index.html`. No server, no internet and no install are needed.
 
-## Multimedia elements used
-| Element | Where | How |
-|---|---|---|
-| Text | Planet facts, quiz | HTML + `data.js` |
-| Graphics | Planet illustrations, logo | SVG drawn in code |
-| Animation | Live orbits, twinkling stars, scroll reveal | `<canvas>` + `requestAnimationFrame`, CSS transitions |
-| Audio | Space ambient drone, click blip | Generated live with the Web Audio API (no mp3 file) |
-| Video | "A day around the Sun" | HTML5 `<video>` with controls |
-| Interactivity | Click planets, speed slider, play/pause, quiz, dark/light theme | JavaScript events |
+## Deploy on Vercel (1 minute)
+1. Go to vercel.com → **Add New → Project** → import `Kanak234/ASSIN-MU`.
+2. Framework preset: **Other**. Leave the build command and output directory empty.
+3. Click **Deploy**. Vercel serves the static files and reads `vercel.json` for security headers. HTTPS is automatic.
 
-## File structure
+## How it works
+1. `js/rules.js` has 13 rules. Each rule is a RegExp pattern, a weight and a Hinglish explanation.
+2. `js/app.js` runs every pattern on the message and collects the matches.
+3. Score = the sum of the weights of the matched rules, counted once per rule and capped at 100.
+   A score of 50 or more is a scam, 20–49 is suspicious, and below 20 has no major red-flag.
+4. Matched words are wrapped in `<mark>`. The user's text is **HTML-escaped first**, which prevents XSS.
+5. The "Suno" button uses the browser's built-in `speechSynthesis` (text-to-speech).
+
+## Multimedia elements
+Text (message and explanations), graphics (KP logo, colour-coded verdict), animation (the risk bar grows smoothly), audio (text-to-speech), interactivity (paste, sample buttons, Ctrl+Enter shortcut).
+
+## Security and privacy
+- 100% client-side. The message never leaves the browser: there is no `fetch` and no server.
+- `vercel.json` adds a strict Content-Security-Policy, HSTS, X-Frame-Options (DENY), nosniff, Referrer-Policy and Permissions-Policy.
+- No cookies, analytics or third-party embeds. See `privacy.html`.
+
+## Files
 ```
-index.html      → page structure (header, canvas, info panel, video, quiz, footer)
-404.html        → custom "page not found" page
-css/style.css   → colours (CSS variables), layout (grid/flex), animations, mobile rules
-js/data.js      → all planet facts in one array (content layer)
-js/orbit.js     → canvas animation: stars, sun, orbits, planets, click detection
-js/audio.js     → Web Audio API: ambient drone + blip sound
-js/quiz.js      → 5-question quiz with score and restart
-js/main.js      → connects the buttons to orbit.js, audio.js and the info panel
-assets/         → KP logo, favicon, intro.mp4 video, preview.png
+index.html     page structure
+css/style.css  styling (traffic-light colours, mobile layout)
+js/rules.js    the 13 scam rules (patterns + weights + explanations)
+js/app.js      matching, scoring, highlighting, speech
+privacy.html   privacy, cookies & terms
+404.html       custom error page
+vercel.json    security headers + clean URLs
+robots.txt     search engine rules
+assets/        KP logo, favicon, social preview image
 ```
-Script order matters: `data → orbit → audio → quiz → main`.
 
-## Key concepts (viva notes)
-- **Planet position:** `x = cx + r·cos(θ)`, `y = cy + r·sin(θ)`. Every frame, θ grows by the planet's speed.
-- **Click detection:** a click counts as a hit when the distance `Math.hypot(dx, dy)` is smaller than the planet's radius.
-- **Why sound starts OFF:** browsers block autoplay audio until the user clicks something.
-- **Accessibility:** skip link, a real `<button>` for every planet (the canvas can't be reached with the Tab key), `aria-live` announcements, visible focus ring, reduced-motion support.
-- **Responsive:** CSS grid becomes one column below 800px, and the nav turns into a ☰ menu.
-
-## Credits and originality
-- All graphics, the sound and the video were made from scratch for this project.
-  The video was rendered frame by frame with a script and encoded with FFmpeg.
-- Planet facts come from public information on NASA's Solar System Exploration site (science.nasa.gov).
-- No user data is collected. There are no cookies, analytics or third-party embeds.
-  Only the theme choice is saved, in the browser's localStorage.
+## Limitations
+Rule-based matching can miss new scam styles (false negatives) or flag a normal message (false positives). It is an awareness tool, not a guarantee. If you have been defrauded, call **1930** or report at **cybercrime.gov.in**.
 
 © Kanak Prabhakar

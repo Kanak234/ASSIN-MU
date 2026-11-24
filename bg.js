@@ -1,89 +1,99 @@
-// bg.js — animated 3D "coding" background shared by all pages.
-// WHAT: a perspective grid floor that moves towards you, plus code symbols
-//       floating at different depths (near = big & bright, far = small & dim).
-// HOW:  a fixed <canvas> behind the page. Simple 3D projection:
-//       screenX = centerX + x / z,  screenY = centerY + y / z
-//       (dividing by depth z makes far things smaller and closer to the centre).
-// It is kept dim so the text on top stays easy to read.
+// bg.js — animated 3D galaxy background, written from scratch (no library).
+// WHAT: about 2,600 stars arranged in 3 spiral arms, slowly rotating in 3D,
+//       plus a few code symbols drifting far away. It is tilted so you
+//       look at the galaxy from slightly above.
+// HOW:  every star has a 3D point (x, y, z). Each frame:
+//       1) rotate it around the Y axis (the galaxy spins)
+//       2) tilt it around the X axis (our viewing angle)
+//       3) project to 2D:  screen = centre + point * (focal / (focal + z))
+//          → far stars get smaller and move towards the centre (perspective).
+// It stays dim so the text on top is always easy to read.
 (function () {
   const canvas = document.createElement("canvas");
   canvas.id = "bg3d";
-  canvas.setAttribute("aria-hidden", "true");      // decoration only, ignored by screen readers
+  canvas.setAttribute("aria-hidden", "true");      // decoration only
   document.body.prepend(canvas);
   const ctx = canvas.getContext("2d");
 
-  // page accent colour (set by <body data-accent="...">)
-  const accent = getComputedStyle(document.body).getPropertyValue("--accent").trim() || "#6ea8ff";
-  const TOKENS = ["{ }", "</>", "( )", "=>", "const", "let", "if", "for", "0101", "#", ";", "[ ]", "fn", "&&", "==", "AI", "JS", "CSS"];
+  const COLORS = ["#ff8a3d", "#f0457a", "#9b4dff", "#ffffff"];   // orange, pink, purple, white
+  const TOKENS = ["{ }", "</>", "=>", "01", "fn", "#", "[ ]", ";"];
+  let w, h, cx, cy, scale;
+  const stars = [], symbols = [];
 
-  let w, h, symbols = [];
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     w = innerWidth; h = innerHeight;
     canvas.width = w * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = w * 0.68; cy = h * 0.38;                   // galaxy centre (upper right, away from the text)
+    scale = Math.max(w, h) * 0.62;
   }
 
-  // one floating symbol at a random 3D position
-  function makeSymbol(z) {
-    return {
-      x: (Math.random() - 0.5) * w * 2.2,          // spread wider than the screen
-      y: (Math.random() - 0.5) * h * 2.2,
-      z: z || Math.random() * 3 + 0.4,             // depth: 0.4 (near) … 3.4 (far)
-      t: TOKENS[(Math.random() * TOKENS.length) | 0]
-    };
+  // ---- build the galaxy once ----
+  const ARMS = 3;
+  for (let i = 0; i < 2600; i++) {
+    const r = 0.05 + Math.pow(Math.random(), 1.6) * 0.95; // more stars near the centre (min radius avoids a thin line in the middle)
+    const arm = (i % ARMS) * (Math.PI * 2 / ARMS);
+    const angle = arm + r * 5.2 + (Math.random() - 0.5) * 0.6; // spiral: angle grows with radius
+    stars.push({
+      r, angle,
+      y: (Math.random() - 0.5) * 0.03 * (1 - r),      // thin disc, a little thicker in the middle
+      size: Math.random() * 1.6 + 0.5,
+      color: r < 0.12 ? "#ffe2c4" : COLORS[(Math.random() * COLORS.length) | 0],
+      speed: 0.00006 / (r + 0.25)                     // inner stars orbit faster (like a real galaxy)
+    });
+  }
+  for (let i = 0; i < 14; i++) {
+    symbols.push({ x: Math.random(), y: Math.random(), z: Math.random() * 0.6 + 0.4,
+                   t: TOKENS[i % TOKENS.length], v: Math.random() * 0.00002 + 0.00001 });
   }
 
-  function drawGrid(time) {
-    // horizon in the lower part of the screen, the grid "floor" below it
-    const horizon = h * 0.62;
-    ctx.strokeStyle = accent;
-    ctx.lineWidth = 1;
-    // horizontal lines: spacing shrinks towards the horizon (perspective),
-    // and an offset that grows with time makes the floor move forward
-    const offset = (time * 0.00025) % 1;
-    for (let i = 0; i < 18; i++) {
-      const d = (i + offset) / 18;                   // 0 = horizon, 1 = bottom
-      const y = horizon + (h - horizon) * d * d;     // squared → perspective spacing
-      ctx.globalAlpha = 0.18 * d;
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-    }
-    // vertical lines meet at one vanishing point in the centre of the horizon
-    for (let i = -14; i <= 14; i++) {
-      ctx.globalAlpha = 0.12;
-      ctx.beginPath();
-      ctx.moveTo(w / 2 + i * 8, horizon);
-      ctx.lineTo(w / 2 + i * w * 0.12, h);
-      ctx.stroke();
-    }
-  }
+  const TILT = 0.62;                                  // view angle (radians) around X: ~35°, galaxy seen from above
+  const cosT = Math.cos(TILT), sinT = Math.sin(TILT);
+  const FOCAL = 2.2;
 
-  function drawSymbols() {
-    ctx.textAlign = "center";
-    for (const s of symbols) {
-      s.z -= 0.0035;                                // move towards the viewer
-      if (s.z < 0.35) Object.assign(s, makeSymbol(3.4)); // too close → respawn far away
-      const sx = w / 2 + s.x / s.z * 0.35;          // 3D → 2D projection
-      const sy = h / 2 + s.y / s.z * 0.35;
-      const size = 14 / s.z;
-      ctx.globalAlpha = Math.min(0.35, 0.5 / s.z) * 0.6;
-      ctx.fillStyle = accent;
-      ctx.font = `600 ${size}px ui-monospace, Consolas, monospace`;
-      ctx.fillText(s.t, sx, sy);
-    }
-  }
-
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   function frame(time) {
     ctx.clearRect(0, 0, w, h);
-    drawGrid(still ? 0 : time);
-    drawSymbols();
+
+    // 1) galaxy core glow
+    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, scale * 0.35);
+    glow.addColorStop(0, "rgba(255, 190, 140, .30)");
+    glow.addColorStop(1, "rgba(155, 77, 255, 0)");
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, w, h);
+
+    // 2) stars: rotate → tilt → project
+    for (const s of stars) {
+      const a = s.angle + time * s.speed;
+      let x = Math.cos(a) * s.r, z = Math.sin(a) * s.r, y = s.y;
+      const y2 = y * cosT - z * sinT;                 // tilt around the X axis
+      const z2 = y * sinT + z * cosT;
+      const p = FOCAL / (FOCAL + z2);                 // perspective factor
+      const sx = cx + x * scale * p, sy = cy + y2 * scale * p;
+      ctx.globalAlpha = Math.min(0.85, 0.35 + 0.5 * p * (1 - s.r * 0.5));
+      ctx.fillStyle = s.color;
+      ctx.fillRect(sx, sy, s.size * p, s.size * p);
+    }
+
+    // 3) a few code symbols drifting slowly (far = small & faint)
+    ctx.font = "600 14px ui-monospace, Consolas, monospace";
+    for (const c of symbols) {
+      c.y -= c.v * 16;                                // float upwards
+      if (c.y < -0.05) { c.y = 1.05; c.x = Math.random(); }
+      ctx.globalAlpha = 0.10 * c.z;
+      ctx.fillStyle = "#c8b6ff";
+      ctx.save();
+      ctx.translate(c.x * w, c.y * h);
+      ctx.scale(c.z * 1.4, c.z * 1.4);
+      ctx.fillText(c.t, 0, 0);
+      ctx.restore();
+    }
     ctx.globalAlpha = 1;
-    if (!still) requestAnimationFrame(frame);       // ~60 fps; browser pauses it in hidden tabs
+    if (!still) requestAnimationFrame(frame);        // browser pauses this in hidden tabs
   }
 
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches; // user asked for less motion → one still frame
   resize();
-  symbols = Array.from({ length: 55 }, () => makeSymbol());
-  addEventListener("resize", resize);
+  addEventListener("resize", () => { resize(); if (still) frame(0); });
   requestAnimationFrame(frame);
 })();

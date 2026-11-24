@@ -8,13 +8,13 @@
 
 /* ---------- 1. Theme colours ---------- */
 :root {
-  --bg: #070b1a;          /* page background (deep space) */
-  --bg2: #0f1630;         /* cards */
-  --text: #e8ecf8;
-  --muted: #a9b3d1;       /* contrast ≈ 8:1 on --bg (passes WCAG AA) */
-  --accent: #ffb52e;      /* sun orange */
-  --accent2: #6ea8ff;
-  --border: rgba(255,255,255,.12);
+  --bg: #090b12;          /* page background (deep space) */
+  --bg2: #141826;         /* cards */
+  --text: #f2f4fa;
+  --muted: #b3bccf;       /* contrast ≈ 9:1 on --bg */
+  --accent: #ff8a3d;      /* orange (same as the rest of the site) */
+  --accent2: #c8a8ff;
+  --border: #2a3248;
   --radius: 14px;
 }
 [data-theme="light"] {
@@ -81,7 +81,7 @@ nav a:hover { color: var(--accent); }
 .hero h1 {
   font-size: clamp(2.4rem, 7vw, 4.5rem);   /* clamp = auto size between phone and desktop */
   margin: 0 0 12px;
-  background: linear-gradient(90deg, var(--accent), #ff6a3d, var(--accent2));
+  background: linear-gradient(105deg, #ff8a3d, #f0457a 50%, #9b4dff);
   -webkit-background-clip: text; background-clip: text; color: transparent;  /* gradient text */
 }
 .hero h1 span { display: block; font-size: .45em; }

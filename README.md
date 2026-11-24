@@ -23,4 +23,4 @@ Add New → Project → import `Kanak234/ASSIN-MU` → Framework **Other** → D
 Everything runs inside the browser. No data is uploaded, stored or tracked.
 
 ---
-Kanak Prabhakar · BCA (Cyber Security), AISECT University, Hazaribagh · Faculty: Mr. Prabhat Kumar
+Kanak Prabhakar · BCA, AISECT University, Hazaribagh · Faculty: Mr. Prabhat Kumar

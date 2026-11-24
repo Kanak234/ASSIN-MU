@@ -176,3 +176,65 @@ li.bad { list-style: none; border-left: 4px solid var(--bad); background: rgba(2
 .hidden { position: absolute; left: -9999px; font-size: 0; }
 #verdict.bad { border-left: 5px solid var(--bad); background: rgba(239, 68, 68, .1); padding: 14px; border-radius: 12px; margin-top: 12px; }
 #verdict.ok  { border-left: 5px solid var(--good); background: rgba(34, 197, 94, .1); padding: 14px; border-radius: 12px; margin-top: 12px; }
+
+/* =====================================================================
+   13. 3D EFFECTS
+   WHY:  depth makes the UI feel physical and modern.
+   HOW:  perspective + rotateX/rotateY (tilt), translateZ (lift),
+         and stacked shadows (light from above).
+   ===================================================================== */
+
+/* 3D title: stacked text-shadows look like an extruded letter */
+.hero h1 {
+  text-shadow:
+    0 1px 0 #1d2742, 0 2px 0 #19223a, 0 3px 0 #151d33,
+    0 4px 0 #11182b, 0 10px 24px rgba(0, 0, 0, .55);
+}
+.hero h1 span { text-shadow: 0 0 28px color-mix(in srgb, var(--accent) 45%, transparent), 0 4px 0 rgba(0, 0, 0, .35); }
+
+/* floating icon above the title */
+.hero .icon { display: inline-block; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 12px 10px rgba(0, 0, 0, .45)); }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-10px) rotate(4deg); } }
+
+/* cards: glossy top edge + deep shadow */
+.card {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, #fff 8%), var(--surface) 40%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 18px 40px rgba(0, 0, 0, .45), 0 2px 6px rgba(0, 0, 0, .3);
+}
+
+/* 3D push buttons: a darker "side" under the button that disappears when pressed */
+button, .btn {
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--accent) 55%, #000), 0 10px 18px rgba(0, 0, 0, .35);
+}
+button:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 color-mix(in srgb, var(--accent) 55%, #000), 0 14px 22px rgba(0, 0, 0, .4); }
+button:active, .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 55%, #000), 0 4px 8px rgba(0, 0, 0, .3); }
+button.secondary { box-shadow: 0 5px 0 #070b16, 0 10px 18px rgba(0, 0, 0, .35); }
+button.secondary:active { box-shadow: 0 1px 0 #070b16; }
+
+/* home project cards tilt in 3D with the mouse (tilt.js sets --rx / --ry) */
+.grid { perspective: 900px; }
+.project {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .2s ease-out, border-color .15s, box-shadow .2s;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .4);
+  position: relative; overflow: hidden;
+}
+.project:hover, .project:focus-visible {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+  box-shadow: 0 26px 50px rgba(0, 0, 0, .55), 0 0 0 1px var(--c);
+}
+.project .emoji, .project h2 { transform: translateZ(40px); }   /* pops out of the card */
+.project p { transform: translateZ(20px); }
+/* light reflection that follows the mouse (--mx / --my) */
+.project::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .2s;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .12), transparent 60%);
+}
+.project:hover::after { opacity: 1; }
+
+/* respect users who turn off motion in their OS settings */
+@media (prefers-reduced-motion: reduce) {
+  .hero .icon { animation: none; }
+  .project { transform: none !important; }
+}
